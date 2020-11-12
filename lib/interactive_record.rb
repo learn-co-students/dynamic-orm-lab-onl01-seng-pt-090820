@@ -45,7 +45,7 @@ class InteractiveRecord
   def values_for_insert
     unformatted_values = self.class.column_names.map do |attribute|
       "'#{self.send("#{attribute}")}'" unless self.send("#{attribute}").nil?
-    end.join(", ")
+    end.compact.join(", ")
   end
 
   # def values_for_insert
