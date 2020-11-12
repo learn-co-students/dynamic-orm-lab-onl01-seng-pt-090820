@@ -34,12 +34,18 @@ class InteractiveRecord
   end
 
   # check out what they did for this one
+  # def values_for_insert
+  #   instance = self
+  #   unformatted_values = self.class.column_names.map do |attribute|
+  #     insertion = instance.send("#{attribute}").to_s unless instance.send("#{attribute}") == nil
+  #     insertion = "\'#{insertion}\'" unless insertion == nil
+  #   end.compact.join(", ")
+  # end
+
   def values_for_insert
-    instance = self
     unformatted_values = self.class.column_names.map do |attribute|
-      insertion = instance.send("#{attribute}").to_s unless instance.send("#{attribute}") == nil
-      insertion = "\'#{insertion}\'" unless insertion == nil
-    end.compact.join(", ")
+      "'#{self.send("#{attribute}")}'" unless self.send("#{attribute}").nil?
+    end.join(", ")
   end
 
   # def values_for_insert
