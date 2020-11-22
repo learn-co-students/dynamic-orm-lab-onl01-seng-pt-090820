@@ -1,6 +1,6 @@
 require_relative '../config/environment'
-require_relative'../lib/student'
-require_relative'../lib/interactive_record'
+require_relative '../lib/student'
+require_relative '../lib/interactive_record'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
